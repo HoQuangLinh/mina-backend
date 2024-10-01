@@ -17,9 +17,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         const mongoUri = configService.get<string>('MONGO_URI');
         return {
           uri: mongoUri,
-          user: configService.get<string>('MONGO_USER'),
-          pass: configService.get<string>('MONGO_PASSWORD'),
-          dbName: configService.get<string>('MONGO_DB'),
         };
       },
     }),
