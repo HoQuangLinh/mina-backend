@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -11,7 +12,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       isGlobal: true,
     }),
     MongooseModule.forRootAsync({
-      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         const mongoUri = configService.get<string>('MONGO_URI');
@@ -20,6 +20,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         };
       },
     }),
+    DatabaseModule,
     AuthModule,
   ],
   controllers: [AppController],
