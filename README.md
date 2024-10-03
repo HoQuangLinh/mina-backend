@@ -1,4 +1,4 @@
-# Docker Setup Instructions
+# Mina backend Setup Instructions
 
 ## 1. Run Docker Compose
 
