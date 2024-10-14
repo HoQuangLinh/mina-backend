@@ -13,7 +13,7 @@ export const databaseProviders = [
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [__dirname + '/../../**/entities/*.entity{.ts,.js}'],
         synchronize: true,
       });
 
