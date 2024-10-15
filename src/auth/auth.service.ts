@@ -1,24 +1,16 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { USER_REPOSITORY } from 'src/constants/repository.constant';
-import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entities/user.entity';
+import { Injectable } from '@nestjs/common';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    @Inject(USER_REPOSITORY)
-    private userRepository: Repository<User>,
-  ) {}
-  async findAll(): Promise<User[]> {
-    return this.userRepository.find();
-  }
-  async login(payload: CreateUserDto) {
-    const { username, password } = payload;
-    const newUser = this.userRepository.create({
-      username,
-      password,
-    });
-    return await this.userRepository.save(newUser);
+  constructor(private usersService: UsersService) {}
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.usersService.findOne(username);
+    if (user && user.password === pass) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 }
