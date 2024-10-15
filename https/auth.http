@@ -6,6 +6,6 @@ Authorization: Bearer {{ACCESS_TOKEN}}
 Content-Type: application/json
 
 {
-    "username":"hoquanglinh",
+    "username":"linh",
     "password":"1234"
 }
