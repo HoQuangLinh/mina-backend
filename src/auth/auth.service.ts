@@ -20,7 +20,7 @@ export class AuthService {
     // return null;
   }
 
-  async validateGoogleUser(email: string, avatarUrl: string): Promise<any> {
+  async findOneOrCreate(email: string, avatarUrl: string): Promise<any> {
     const user = await this.usersService.findOne({ email });
     if (!user) {
       return await this.usersService.save({

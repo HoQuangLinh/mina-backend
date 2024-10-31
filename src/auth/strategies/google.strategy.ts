@@ -24,10 +24,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     const avatarUrl = profile?.photos[0]?.value;
     const email = profile?.emails[0]?.value;
 
-    const user = await this.authService.validateGoogleUser(email, avatarUrl);
-    if (!user) {
-      throw new UnauthorizedException();
-    }
+    const user = await this.authService.findOneOrCreate(email, avatarUrl);
+
     done(null, user);
   }
 }
