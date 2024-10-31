@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { envConfig } from 'src/config/env.config';
+import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
-import { User } from '../users/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -10,17 +10,11 @@ export class AuthService {
     private usersService: UsersService,
     private readonly jwtService: JwtService,
   ) {}
-  async validateUser(username: string, password: string): Promise<any> {
-    // const user = await this.usersService.findOne(username);
-    // if (user && user.password === pass) {
-    //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    //   const { password, ...result } = user;
-    //   return result;
-    // }
-    // return null;
+  async validateUser(email: string, password: string): Promise<any> {
+    // Implement later
   }
 
-  async validateGoogleUser(email: string, avatarUrl: string): Promise<any> {
+  async findOneOrCreate(email: string, avatarUrl: string): Promise<User> {
     const user = await this.usersService.findOne({ email });
     if (!user) {
       return await this.usersService.save({
