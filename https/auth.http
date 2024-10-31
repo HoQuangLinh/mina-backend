@@ -2,7 +2,6 @@
 @ACCESS_TOKEN=
 ###
 POST  {{SERVER_URL}}/api/auth/login
-Authorization: Bearer {{ACCESS_TOKEN}}
 Content-Type: application/json
 
 {

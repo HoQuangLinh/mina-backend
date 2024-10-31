@@ -10,8 +10,8 @@ import { UsersModule } from './users/users.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '.env',
     }),
-
     DatabaseModule,
     AuthModule,
     UsersModule,
