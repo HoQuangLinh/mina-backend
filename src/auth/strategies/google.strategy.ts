@@ -20,7 +20,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     refreshToken: string,
     profile: any,
     done: VerifyCallback,
-  ): Promise<any> {
+  ): Promise<void> {
     const avatarUrl = profile?.photos[0]?.value;
     const email = profile?.emails[0]?.value;
 
