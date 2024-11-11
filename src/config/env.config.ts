@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-import { url } from 'inspector';
 
 dotenv.config();
 export const envConfig = {

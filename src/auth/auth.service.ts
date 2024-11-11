@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { envConfig } from 'src/config/env.config';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
@@ -31,5 +32,9 @@ export class AuthService {
       secret: envConfig.jwt.secret,
       expiresIn: envConfig.jwt.expireIn,
     });
+  }
+
+  async login(payload: LoginDto) {
+    return true;
   }
 }

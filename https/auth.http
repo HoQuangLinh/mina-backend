@@ -5,3 +5,12 @@
 
 ###
 GET {{SERVER_URL}}/api/auth/google
+
+
+###
+POST {{SERVER_URL}}/api/auth/login
+Content-Type: application/json
+
+{
+   "username":"s"
+}

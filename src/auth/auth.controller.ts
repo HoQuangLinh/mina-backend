@@ -1,9 +1,18 @@
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 import { envConfig } from 'src/config/env.config';
 import { User } from 'src/users/entities/user.entity';
 import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -28,5 +37,12 @@ export class AuthController {
     });
 
     return res.redirect(envConfig.client.url);
+  }
+
+  // @IgnoreResponseFormat()
+  @Post('login')
+  async login(@Body() payload: LoginDto) {
+    const data = await this.authService.login(payload);
+    return data;
   }
 }
