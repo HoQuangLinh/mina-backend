@@ -1,0 +1,12 @@
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 30
+      arrivalRate: 500 # Number of requests per second
+scenarios:
+  - flow:
+      - post:
+          url: '/api/auth/register'
+          json:
+            email: 'hoquanglinh2710@gmail.com'
+            password: '11'

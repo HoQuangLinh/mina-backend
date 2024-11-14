@@ -13,6 +13,7 @@ import { envConfig } from 'src/config/env.config';
 import { User } from 'src/users/entities/user.entity';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { RegisterUserDto } from './dto/register-user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -43,6 +44,12 @@ export class AuthController {
   @Post('login')
   async login(@Body() payload: LoginDto) {
     const data = await this.authService.login(payload);
+    return data;
+  }
+
+  @Post('register')
+  async register(@Body() payload: RegisterUserDto) {
+    const data = await this.authService.register(payload);
     return data;
   }
 }

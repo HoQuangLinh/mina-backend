@@ -17,4 +17,7 @@ export const envConfig = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackUrl: `${process.env.SERVER_URL}/api/auth/google/redirect`,
   },
+  password: {
+    saltRound: process.env.SAT_ROUND_PASSWORD || '10',
+  },
 };

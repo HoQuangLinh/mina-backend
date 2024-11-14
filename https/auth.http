@@ -12,5 +12,25 @@ POST {{SERVER_URL}}/api/auth/login
 Content-Type: application/json
 
 {
-   "username":"s"
+   "email":"linh121@gmail.com",
+   "password":"Li2710001"
 }
+
+###
+POST {{SERVER_URL}}/api/auth/register
+Content-Type: application/json
+
+{
+   "email":"linh121@gmail.com",
+   "password":"Li271000",
+   "nationCode":"VN",
+   "languageCode":"vi"
+}
+
+###
+GET {{SERVER_URL}}/api/users?email=user_1008801@example.com
+
+
+###
+GET {{SERVER_URL}}/api/users
+ 

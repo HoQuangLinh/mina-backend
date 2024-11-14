@@ -1,5 +1,6 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
 
 async function bootstrap() {
@@ -7,6 +8,7 @@ async function bootstrap() {
   const reflector = app.get(Reflector);
   app.setGlobalPrefix('api', { exclude: ['/'] });
   app.useGlobalInterceptors(new ResponseInterceptor(reflector));
+  app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     origin: '*',
   });

@@ -1,0 +1,19 @@
+import { Controller, Get, Query } from '@nestjs/common';
+
+import { UsersService } from './users.service';
+
+@Controller('users')
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
+
+  @Get('')
+  async get(@Query('email') email: string) {
+    if (!email) {
+      return await this.usersService.find();
+    }
+    const data = await this.usersService.findOne({
+      email: email,
+    });
+    return data;
+  }
+}
