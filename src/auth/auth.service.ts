@@ -54,7 +54,7 @@ export class AuthService {
     if (!isValidPassword) {
       throw new UnauthorizedException('Username or password not correct!');
     }
-    return instanceToPlain(user);
+    return user;
   }
   async register(payload: RegisterUserDto) {
     const { email, password, nationCode, languageCode } = payload;

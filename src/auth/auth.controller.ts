@@ -42,9 +42,16 @@ export class AuthController {
 
   // @IgnoreResponseFormat()
   @Post('login')
-  async login(@Body() payload: LoginDto) {
-    const data = await this.authService.login(payload);
-    return data;
+  async login(@Body() payload: LoginDto, @Res() res: Response) {
+    const user = await this.authService.login(payload);
+    const token = await this.authService.generateToken(user);
+    res.cookie('accessToken', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24 * 1000,
+    });
+    return res.json({ message: 'Login successful!', data: token });
   }
 
   @Post('register')
