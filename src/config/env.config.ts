@@ -9,7 +9,7 @@ export const envConfig = {
     url: process.env.SERVER_URL,
   },
   jwt: {
-    expireIn: '1d',
+    expireIn: process.env.JWT_SECRET_EXPIRE_IN || '1d',
     secret: process.env.JWT_SECRET_KEY,
   },
   google: {

@@ -1,17 +1,14 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
+import { instanceToPlain } from 'class-transformer';
 import { envConfig } from 'src/config/env.config';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
-import { LoginDto } from './dto/login.dto';
 import { DataSource } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+import { LoginDto } from './dto/login.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
-import {
-  classToPlain,
-  instanceToInstance,
-  instanceToPlain,
-} from 'class-transformer';
+import { IExtractJwtPayload } from './interface/jwt.interface';
 
 @Injectable()
 export class AuthService {
@@ -20,9 +17,6 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private dataSource: DataSource,
   ) {}
-  async validateUser(email: string, password: string): Promise<any> {
-    // Implement later
-  }
 
   async findOneOrCreate(email: string, avatarUrl: string): Promise<User> {
     const user = await this.usersService.findOne({ email });
@@ -36,14 +30,14 @@ export class AuthService {
   }
 
   async generateToken({ email, id }: User): Promise<string> {
-    const payload = { email, userId: id };
+    const payload: IExtractJwtPayload = { email, userId: id };
     return await this.jwtService.signAsync(payload, {
       secret: envConfig.jwt.secret,
       expiresIn: envConfig.jwt.expireIn,
     });
   }
 
-  async login(payload: LoginDto) {
+  async login(payload: LoginDto): Promise<Record<string, User>> {
     const { email, password } = payload;
     const user = await this.usersService.findOne({ email });
     if (!user) {
@@ -54,9 +48,9 @@ export class AuthService {
     if (!isValidPassword) {
       throw new UnauthorizedException('Username or password not correct!');
     }
-    return user;
+    return instanceToPlain(user);
   }
-  async register(payload: RegisterUserDto) {
+  async register(payload: RegisterUserDto): Promise<User> {
     const { email, password, nationCode, languageCode } = payload;
 
     const user = await this.usersService.findOne({ email });
@@ -68,11 +62,12 @@ export class AuthService {
       password,
       parseInt(envConfig.password.saltRound),
     );
-    return await this.usersService.save({
+    const savedUser = await this.usersService.save({
       email,
       nationCode,
       languageCode,
       password: passportHash,
     });
+    return savedUser;
   }
 }

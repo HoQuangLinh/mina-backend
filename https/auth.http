@@ -1,5 +1,5 @@
 @SERVER_URL = http://localhost:8000
-@ACCESS_TOKEN=
+@ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMTIzNEBnbWFpbC5jb20iLCJ1c2VySWQiOiI4NTczMDYwZC02NGYxLTQ4ZTEtODdjMy1kNWVlNjZkMDIyNWEiLCJpYXQiOjE3MzE1NzU5OTksImV4cCI6MTczMTY2MjM5OX0.kn2KrvfbzzHPCpVjr25nyUxdnWpjH3dPqEAwj-GYfX8
 ###
 
 
@@ -12,8 +12,8 @@ POST {{SERVER_URL}}/api/auth/login
 Content-Type: application/json
 
 {
-   "email":"linh121@gmail.com",
-   "password":"Li271000"
+   "email":"admin@gmail.com",
+   "password":"admin"
 }
 
 ###
@@ -21,16 +21,20 @@ POST {{SERVER_URL}}/api/auth/register
 Content-Type: application/json
 
 {
-   "email":"linh121@gmail.com",
-   "password":"Li271000",
+   "email":"ss12234@gmail.com",
+   "password":"admin",
    "nationCode":"VN",
    "languageCode":"vi"
 }
 
 ###
 GET {{SERVER_URL}}/api/users?email=user_1008801@example.com
+Authorization: Bearer {{ACCESS_TOKEN}}
 
 
 ###
+GET {{SERVER_URL}}/api/auth/me
+Authorization: Bearer {{ACCESS_TOKEN}}
+
 
  
