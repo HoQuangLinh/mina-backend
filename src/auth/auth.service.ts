@@ -5,25 +5,26 @@ import { instanceToPlain } from 'class-transformer';
 import { envConfig } from 'src/config/env.config';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
-import { DataSource } from 'typeorm';
 import { LoginDto } from './dto/login.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { IExtractJwtPayload } from './interface/jwt.interface';
+import { IUser } from './interface/user.interface';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private readonly jwtService: JwtService,
-    private dataSource: DataSource,
   ) {}
 
-  async findOneOrCreate(email: string, avatarUrl: string): Promise<User> {
+  async findOneOrCreate(payload: IUser): Promise<User> {
+    const { email, avatarUrl, provider } = payload;
     const user = await this.usersService.findOne({ email });
     if (!user) {
       return await this.usersService.save({
         email,
         avatarUrl,
+        provider,
       });
     }
     return user;

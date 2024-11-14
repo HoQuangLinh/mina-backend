@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{SERVER_URL}}/api/users?email=user_1008801@example.com
+GET {{SERVER_URL}}/api/users?email=19521750@gm.uit.edu.vn
 Authorization: Bearer {{ACCESS_TOKEN}}
 
 
