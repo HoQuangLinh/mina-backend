@@ -1,5 +1,5 @@
 @SERVER_URL = http://localhost:8000
-@ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMTIzNEBnbWFpbC5jb20iLCJ1c2VySWQiOiI4NTczMDYwZC02NGYxLTQ4ZTEtODdjMy1kNWVlNjZkMDIyNWEiLCJpYXQiOjE3MzE1NzU5OTksImV4cCI6MTczMTY2MjM5OX0.kn2KrvfbzzHPCpVjr25nyUxdnWpjH3dPqEAwj-GYfX8
+@ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMWcxMjIyMzRAZ21haWwuY29tIiwidXNlcklkIjoiZDJjZWY0ZWItZjY3Yi00ZDYyLTg1NTEtMjU3MjE0OGJmODlmIiwiaWF0IjoxNzMxNjY2NjIwLCJleHAiOjE3MzE3NTMwMjB9.RRwXEvkYCAtIrvDqXgOY9sCUs6WZ714UHb71bYFyf6g
 ###
 
 
@@ -27,8 +27,7 @@ Content-Type: application/json
 
 ###
 GET {{SERVER_URL}}/api/users?email=19521750@gm.uit.edu.vn
-Authorization: Bearer {{ACCESS_TOKEN}}
-
+Cookie: accessToken={{ACCESS_TOKEN}}
 
 ###
 GET {{SERVER_URL}}/api/auth/me
