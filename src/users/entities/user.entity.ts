@@ -13,12 +13,6 @@ export class User extends BaseEntity {
   @Exclude()
   password: string;
 
-  @Column({ length: 100, nullable: true })
-  nationCode: string;
-
-  @Column({ length: 10, nullable: true })
-  languageCode: string;
-
   @Column({ length: 200, nullable: true })
   avatarUrl: string;
 

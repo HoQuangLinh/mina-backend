@@ -52,7 +52,7 @@ export class AuthService {
     return instanceToPlain(user);
   }
   async register(payload: RegisterUserDto): Promise<User> {
-    const { email, password, nationCode, languageCode } = payload;
+    const { email, password } = payload;
 
     const user = await this.usersService.findOne({ email });
     if (user?.email) {
@@ -65,8 +65,6 @@ export class AuthService {
     );
     const savedUser = await this.usersService.save({
       email,
-      nationCode,
-      languageCode,
       password: passportHash,
     });
     return savedUser;

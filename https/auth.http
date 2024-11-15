@@ -21,10 +21,9 @@ POST {{SERVER_URL}}/api/auth/register
 Content-Type: application/json
 
 {
-   "email":"ss12234@gmail.com",
-   "password":"admin",
-   "nationCode":"VN",
-   "languageCode":"vi"
+   "email":"ss1g12234@gmail.com",
+   "password":"admin"
+  
 }
 
 ###
