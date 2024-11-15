@@ -21,9 +21,8 @@ POST {{SERVER_URL}}/api/auth/register
 Content-Type: application/json
 
 {
-   "email":"ss1g12234@gmail.com",
-   "password":"admin"
-  
+   "email":"ss1g122234@gmail.com",
+   "password":"s1ws"
 }
 
 ###

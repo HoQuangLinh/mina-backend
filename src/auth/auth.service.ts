@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { instanceToPlain } from 'class-transformer';
@@ -56,7 +60,7 @@ export class AuthService {
 
     const user = await this.usersService.findOne({ email });
     if (user?.email) {
-      throw new UnauthorizedException('This email has been register!');
+      throw new BadRequestException('This email has been register!');
     }
 
     const passportHash = await bcrypt.hash(
