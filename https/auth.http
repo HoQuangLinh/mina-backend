@@ -1,5 +1,5 @@
 @SERVER_URL = http://localhost:8000
-@ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMWcxMjIyMzRAZ21haWwuY29tIiwidXNlcklkIjoiZDJjZWY0ZWItZjY3Yi00ZDYyLTg1NTEtMjU3MjE0OGJmODlmIiwiaWF0IjoxNzMxNjY2NjIwLCJleHAiOjE3MzE3NTMwMjB9.RRwXEvkYCAtIrvDqXgOY9sCUs6WZ714UHb71bYFyf6g
+@ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMWcxMjIyMzRAZ21haWwuY29tIiwidXNlcklkIjoiNWFlYzcxN2EtYzE1MC00Yzc2LWJhYmUtZTk0MjY3NzA3M2UxIiwiaWF0IjoxNzM1MjI0MjU0LCJleHAiOjE3MzUzMTA2NTR9.4awu2MoiKPLFHh7mUeKZEeHUSf0AuoeOxw9z2WWGaR8
 ###
 
 
@@ -12,8 +12,8 @@ POST {{SERVER_URL}}/api/auth/login
 Content-Type: application/json
 
 {
-   "email":"admin@gmail.com",
-   "password":"admin"
+   "email":"ss1g122234@gmail.com",
+   "password":"s1ws"
 }
 
 ###
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{SERVER_URL}}/api/users?email=19521750@gm.uit.edu.vn
+GET {{SERVER_URL}}/api/users?email=ss1g122234@gmail.com
 Cookie: accessToken={{ACCESS_TOKEN}}
 
 ###

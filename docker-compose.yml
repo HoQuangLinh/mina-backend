@@ -5,13 +5,19 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_USER: quanglinh 
-      POSTGRES_PASSWORD: 1234      
-      POSTGRES_DB: mina      
+      POSTGRES_USER: quanglinh
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: mina
     ports:
-      - "5432:5432"                         
+      - '5432:5432'
     volumes:
-      - postgres_data:/var/lib/postgresql/data  
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: redis-server
+    restart: always
+    ports:
+      - '6379:6379'
 
 volumes:
   postgres_data:

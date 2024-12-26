@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { BaseEntity } from 'src/database/base/base.entity';
+import { UserRoom } from 'src/rooms/entities/user-room.entity';
 import { Column, DeleteDateColumn, Entity, Index } from 'typeorm';
 import { UserProvider, UserRole } from '../enums/user.enum';
 
@@ -24,4 +25,7 @@ export class User extends BaseEntity {
 
   @DeleteDateColumn()
   deletedAt?: Date;
+
+  // @OneToMany(() => UserRoom, (userGroup) => userGroup.user)
+  userRooms: UserRoom[];
 }

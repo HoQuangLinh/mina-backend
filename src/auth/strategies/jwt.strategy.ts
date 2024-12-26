@@ -26,6 +26,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!userId || !email) {
       return null;
     }
+    console.log(2);
     const user = await this.usersService.findOne({ id: userId });
     return instanceToPlain(user);
   }

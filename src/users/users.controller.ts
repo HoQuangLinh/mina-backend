@@ -7,13 +7,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('')
-  async get(@Query('email') email: string) {
-    if (!email) {
-      throw new BadRequestException('email param is required');
-    }
-    const data = await this.usersService.findOne({
-      email: email,
-    });
+  async get() {
+    const data = await this.usersService.find();
     return data;
   }
 }
