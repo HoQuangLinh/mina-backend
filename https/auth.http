@@ -1,4 +1,4 @@
-@SERVER_URL = http://localhost:8000
+@SERVER_URL = https://mina-backend.onrender.com
 @ACCESS_TOKEN=  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNzMWcxMjIyMzRAZ21haWwuY29tIiwidXNlcklkIjoiNWFlYzcxN2EtYzE1MC00Yzc2LWJhYmUtZTk0MjY3NzA3M2UxIiwiaWF0IjoxNzM1MjI0MjU0LCJleHAiOjE3MzUzMTA2NTR9.4awu2MoiKPLFHh7mUeKZEeHUSf0AuoeOxw9z2WWGaR8
 ###
 
